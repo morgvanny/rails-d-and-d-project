@@ -11,7 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160623070428) do
+ActiveRecord::Schema.define(version: 20161124081636) do
+
+  create_table "characters", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "level"
+    t.string   "race"
+    t.string   "character_class"
+    t.string   "alignment"
+    t.integer  "strength"
+    t.integer  "dexterity"
+    t.integer  "constitution"
+    t.integer  "intelligence"
+    t.integer  "wisdom"
+    t.integer  "charisma"
+    t.integer  "hp"
+    t.integer  "ac"
+    t.integer  "initiative"
+    t.integer  "speed"
+    t.string   "notes"
+    t.integer  "user_id"
+    t.integer  "party_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "parties", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
