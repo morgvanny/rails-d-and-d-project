@@ -12,6 +12,4 @@ class Character < ActiveRecord::Base
     inclusion: { in: [0,20] }
   validates :level, inclusion: { in: [1,20] }
 
-    scope :grouped, -> { where(:group) }
-
 end

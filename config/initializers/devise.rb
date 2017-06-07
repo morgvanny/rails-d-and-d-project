@@ -242,7 +242,7 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-  config.omniauth :google_oauth2, ENV['GOOGLE_KEY'], ENV['GOOGLE_SECRET'],
+  config.omniauth :google_oauth2, ENV["GOOGLE_CLIENT_ID"], ENV['GOOGLE_CLIENT_SECRET'],
   callback_url: "http://localhost:3000/users/auth/google_oauth2/callback",
   :client_options => { :ssl => { :verify => !Rails.env.development? } }
 
