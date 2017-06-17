@@ -4,7 +4,7 @@ class PartiesController < ApplicationController
   end
 
   def new
-    @party = Party.new(user_id: params[:user_id])
+    @party = Party.new
   end
 
   def create
