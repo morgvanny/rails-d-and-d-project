@@ -1,7 +1,7 @@
 # Story
 
 # User is logged in
-  - They are redirect to the users profile page /users/:slug - /users/:id
+ [x] They are redirect to the users profile page /users/:slug - /users/:id
   - This page includes:
     - A list of parties
       - each party has a link to the parties show page resource :parties, only: [:show, :update]

@@ -8,9 +8,10 @@
 </head>
 <body>
 <% if current_user %>
-  <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+  <div align="right" > <%= link_to "Sign out", destroy_user_session_path, :method => :delete %> </div>
 <% end %>
-<%= yield %>
 
+<%= yield %>
+<%= content_tag(:div, flash[:alert], :id => "flash_alert") if flash[:alert] %>
 </body>
 </html>

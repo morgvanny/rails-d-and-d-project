@@ -1,35 +1,109 @@
 <%= form_for character do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
+  <br>
   <%= f.label :level %>
   <%= f.number_field :level %>
+  <br>
   <%= f.label :race %>
-  RADIO
+  <%= f.radio_button :race, 'Dwarf' %>
+  <%= f.label :race, 'Dwarf', :value => 'Dwarf' %>
+  <%= f.radio_button :race, 'Elf' %>
+  <%= f.label :race, 'Elf', :value => 'Elf' %>
+  <%= f.radio_button :race, 'Halfling' %>
+  <%= f.label :race, 'Halfling', :value => 'Halfling' %>
+  <%= f.radio_button :race, 'Human' %>
+  <%= f.label :race, 'Human', :value => 'Human' %>
+  <%= f.radio_button :race, 'Dragonborn' %>
+  <%= f.label :race, 'Dragonborn', :value => 'Dragonborn' %>
+  <%= f.radio_button :race, 'Gnome' %>
+  <%= f.label :race, 'Gnome', :value => 'Gnome' %>
+  <%= f.radio_button :race, 'Half-Elf' %>
+  <%= f.label :race, 'Half-Elf', :value => 'Half-Elf' %>
+  <%= f.radio_button :race, 'Half-Orc' %>
+  <%= f.label :race, 'Half-Orc', :value => 'Half-Orc' %>
+  <%= f.radio_button :race, 'Tiefling' %>
+  <%= f.label :race, 'Tiefling', :value => 'Tiefling' %>
+  <br>
   <%= f.label :character_class %>
-  RADIO
+  <%= f.radio_button :character_class, 'Barbarian' %>
+  <%= f.label :character_class, 'Barbarian', :value => 'Barbarian' %>
+  <%= f.radio_button :character_class, 'Bard' %>
+  <%= f.label :character_class, 'Bard', :value => 'Bard' %>
+  <%= f.radio_button :character_class, 'Cleric' %>
+  <%= f.label :character_class, 'Cleric', :value => 'Cleric' %>
+  <%= f.radio_button :character_class, 'Druid' %>
+  <%= f.label :character_class, 'Druid', :value => 'Druid' %>
+  <%= f.radio_button :character_class, 'Fighter' %>
+  <%= f.label :character_class, 'Fighter', :value => 'Fighter' %>
+  <%= f.radio_button :character_class, 'Monk' %>
+  <%= f.label :character_class, 'Monk', :value => 'Monk' %>
+  <%= f.radio_button :character_class, 'Paladin' %>
+  <%= f.label :character_class, 'Paladin', :value => 'Paladin' %>
+  <%= f.radio_button :character_class, 'Ranger' %>
+  <%= f.label :character_class, 'Ranger', :value => 'Ranger' %>
+  <%= f.radio_button :character_class, 'Rogue' %>
+  <%= f.label :character_class, 'Rogue', :value => 'Rogue' %>
+  <%= f.radio_button :character_class, 'Sorcerer' %>
+  <%= f.label :character_class, 'Sorcerer', :value => 'Sorcerer' %>
+  <%= f.radio_button :character_class, 'Warlock' %>
+  <%= f.label :character_class, 'Warlock', :value => 'Warlock' %>
+  <%= f.radio_button :character_class, 'Wizard' %>
+  <%= f.label :character_class, 'Wizard', :value => 'Wizard' %>
+  <br>
   <%= f.label :alignment %>
-  RADIO
+  <%= f.radio_button :alignment, 'Lawful Good' %>
+  <%= f.label :alignment, 'Lawful Good', :value => 'Lawful Good' %>
+  <%= f.radio_button :alignment, 'Neutral Good' %>
+  <%= f.label :alignment, 'Neutral Good', :value => 'Neutral Good' %>
+  <%= f.radio_button :alignment, 'Chaotic Good' %>
+  <%= f.label :alignment, 'Chaotic Good', :value => 'Chaotic Good' %>
+  <%= f.radio_button :alignment, 'Lawful Neutral' %>
+  <%= f.label :alignment, 'Lawful Neutral', :value => 'Lawful Neutral' %>
+  <%= f.radio_button :alignment, 'True Neutral' %>
+  <%= f.label :alignment, 'True Neutral', :value => 'True Neutral' %>
+  <%= f.radio_button :alignment, 'Chaotic Neutral' %>
+  <%= f.label :alignment, 'Chaotic Neutral', :value => 'Chaotic Neutral' %>
+  <%= f.radio_button :alignment, 'Lawful Evil' %>
+  <%= f.label :alignment, 'Lawful Evil', :value => 'Lawful Evil' %>
+  <%= f.radio_button :alignment, 'Neutral Evil' %>
+  <%= f.label :alignment, 'Neutral Evil', :value => 'Neutral Evil' %>
+  <%= f.radio_button :alignment, 'Chaotic Evil' %>
+  <%= f.label :alignment, 'Chaotic Evil', :value => 'Chaotic Evil' %>
+  <br>
   <%= f.label :strength %>
   <%= f.number_field :strength %>
+  <br>
   <%= f.label :dexterity %>
   <%= f.number_field :dexterity %>
+  <br>
   <%= f.label :constitution %>
   <%= f.number_field :constitution %>
+  <br>
   <%= f.label :intelligence %>
   <%= f.number_field :intelligence %>
+  <br>
   <%= f.label :wisdom %>
   <%= f.number_field :wisdom %>
+  <br>
   <%= f.label :charisma %>
   <%= f.number_field :charisma %>
+  <br>
   <%= f.label :hp %>
   <%= f.number_field :hp %>
+  <br>
   <%= f.label :ac %>
   <%= f.number_field :ac %>
+  <br>
   <%= f.label :initiative %>
   <%= f.number_field :initiative %>
+  <br>
   <%= f.label :speed %>
   <%= f.number_field :speed %>
+  <br>
   <%= f.label :notes %>
-  <%= f.text_field :notes %>
+  <br>
+  <%= f.text_area :notes %>
+  <br>
   <%= f.submit 'save' %>
 <% end %>

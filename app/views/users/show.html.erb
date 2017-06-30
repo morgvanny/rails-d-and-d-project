@@ -1,1 +1,25 @@
-here are your characters and parties
+<h1>Welcome to D-and-D Manager!</h1>
+
+<h2>Characters</h2>
+
+<% if @characters.count > 0 %>
+  <p><%= @characters %></p>
+<% else %>
+  <p>You haven't created any characters yet!</p>
+<% end %>
+
+<p><%= link_to "Create a Character", controller: "characters", action: "new" %></p>
+
+<h2>Parties</h2>
+
+<% if @parties.count > 0 %>
+  <p></p>
+<% else %>
+  <p>You aren't a member of any parties yet!</p>
+<% end %>
+
+<% if @characters.count > 0 %>
+  <p><%= link_to "Create a Party", controller: "parties", action: "new" %></p>
+<% else %>
+  <p>You need a character to start a party<p>
+<% end %>
