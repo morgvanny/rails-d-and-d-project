@@ -25,17 +25,26 @@ class CharactersController < ApplicationController
 
   def update
     @character = Character.find(params[:id])
-    if @character.update(character_params)
-      redirect_to @character
+    if @character.user_id == current_user.id
+      if @character.update(character_params)
+        redirect_to @character
+      else
+        flash[:alert] = "Fields must be filled out correctly"
+        render :edit
+      end
     else
-      flash[:alert] = "Fields must be filled out correctly"
-      render :edit
+      flash[:alert] = "You can't edit someone else's character!"
+      redirect_to root
     end
   end
 
   def destroy
     @character = Character.find(params[:id])
-    @character.destroy
+    if @character.user_id == current_user.id
+      @character.destroy
+    else
+      flash[:alert] = "You can't delete someone else's character!"
+    end
     redirect_to user_path(current_user)
   end
 
