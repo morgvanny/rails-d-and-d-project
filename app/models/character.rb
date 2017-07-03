@@ -6,10 +6,8 @@ class Character < ActiveRecord::Base
     :dexterity, :constitution, :intelligence, :wisdom, :charisma, :hp, :ac,
     :initiative, :speed, :user_id
 
-  validates :alignment, inclusion: { in: %w(Lawful Good Neutral Good Chaotic Good
-    Lawful Neutral True Neutral Chaotic Neutral Lawful Evil Neutral Evil Chaotic Evil)}
-  validates :strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma,
-    inclusion: { in: [0,20] }
-  validates :level, inclusion: { in: [1,20] }
+  validates :strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma, :speed,
+    inclusion: { in: 0..20 }
+  validates :level, inclusion: { in: 1..20 }
 
 end

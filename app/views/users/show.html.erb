@@ -1,25 +1,32 @@
 <h1>Welcome to D-and-D Manager!</h1>
 
-<h2>Characters</h2>
+<h2>Your Characters:</h2>
 
 <% if @characters.count > 0 %>
-  <p><%= @characters %></p>
+  <% @characters.each do |character| %>
+    <%= link_to character.name, "characters/#{character.id}" %>
+    <br>
+  <% end %>
 <% else %>
   <p>You haven't created any characters yet!</p>
 <% end %>
 
 <p><%= link_to "Create a Character", controller: "characters", action: "new" %></p>
 
-<h2>Parties</h2>
+<h2>Parties your characters are in:</h2>
 
 <% if @parties.count > 0 %>
-  <p></p>
+<% @parties.each do |party| %>
+  <%= link_to party.name, "parties/#{party.id}" %>
+  <br>
+<% end %>
 <% else %>
   <p>You aren't a member of any parties yet!</p>
 <% end %>
 
 <% if @characters.count > 0 %>
+  <p>If you'd like to add your character to a party, go to your character's page, click "edit," and select the party you'd like them to join.</p>
   <p><%= link_to "Create a Party", controller: "parties", action: "new" %></p>
 <% else %>
-  <p>You need a character to start a party<p>
+  <p>Create a character before you start a party<p>
 <% end %>

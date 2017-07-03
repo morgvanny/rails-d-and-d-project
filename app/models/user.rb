@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   :validatable,:timeoutable, :omniauthable, :omniauth_providers => [:google_oauth2]
 
   has_many :characters
-  has_many :parties, :through => :characters
+  has_many :parties, -> { uniq }, :through => :characters
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

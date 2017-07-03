@@ -2,6 +2,7 @@ class CharactersController < ApplicationController
 
   def new
     @character = Character.new(user_id: params[:user_id])
+    @parties = Party.all
   end
 
   def create

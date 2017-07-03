@@ -1,14 +1,9 @@
 <h2><%= @party.name %></h2>
-  <% current_user.characters.each do |character| %>
-    <% if character.party != @party %>
-      <% @switch = true %>
-    <% end %>
+<% if @party.characters.count > 0 %>
+  <h3>Characters in the party:</h3>
+  <% @party.characters.each do |character| %>
+    <li><a href="/characters/<%= character.id %>"><%= character.name %></a></li>
   <% end %>
-<% end %>
-<% if @switch %>
-  <p><a href="/parties/<%= @party.slug %>/join">Join this party!</a></p>
-<% end %>
-<h3>Characters in the party:</h3>
-<% @party.characters.each do |character| %>
-  <li><a href="/characters/<%= character.id %>"><%= character.name %></a></li>
+<% else %>
+  <p>This party is empty!</p>
 <% end %>
