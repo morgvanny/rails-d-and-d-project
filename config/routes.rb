@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   resources :users, :only => [:show]
 
+  match 'characters/leaderboard' => 'characters#leaderboard', via: :get
+
   resources :characters
 
   resources :parties

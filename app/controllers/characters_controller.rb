@@ -38,6 +38,10 @@ class CharactersController < ApplicationController
     end
   end
 
+  def leaderboard
+    @characters = Character.all.order(level: :desc)
+  end
+
   def destroy
     @character = Character.find(params[:id])
     if @character.user_id == current_user.id
