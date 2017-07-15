@@ -3,6 +3,7 @@ class CharactersController < ApplicationController
   def new
     @character = Character.new(user_id: params[:user_id])
     @parties = Party.all
+    @secret = @character.secrets.build
   end
 
   def create
@@ -39,7 +40,7 @@ class CharactersController < ApplicationController
   end
 
   def leaderboard
-    @characters = Character.all.order(level: :desc)
+    @characters = Character.leaderboard
   end
 
   def destroy
@@ -57,7 +58,7 @@ class CharactersController < ApplicationController
   def character_params
     params.require(:character).permit(:name, :level, :race, :character_class,
       :alignment, :strength, :dexterity, :constitution, :intelligence, :wisdom,
-      :charisma, :hp, :ac, :initiative, :speed, :notes, :user_id, :party_id)
-    end
+      :charisma, :hp, :ac, :initiative, :speed, :notes, :user_id, :party_id, secrets_attributes: [:id, :content])
+  end
 
 end

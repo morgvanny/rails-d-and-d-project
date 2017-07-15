@@ -5,7 +5,9 @@ Rails.application.routes.draw do
 
   match 'characters/leaderboard' => 'characters#leaderboard', via: :get
 
-  resources :characters
+  resources :characters do
+    resources :secrets
+  end
 
   resources :parties
 

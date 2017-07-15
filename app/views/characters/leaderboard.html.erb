@@ -1,8 +1,8 @@
-<h1>These are all the characters on the site: </h1>
+<h1>Leaderboard for all of the characters on the site: </h1>
 <br>
 <% if @characters.count > 0 %>
   <% @characters.each do |character| %>
-    <p>Name: <%= link_to character.name, "/characters/#{character.id}" %> &ensp; Level: <%= character.level %></p>
+    <p>Name: <%= link_to character.name, "/characters/#{character.id}" %> &emsp; Level: <%= character.level %></p>
     <br>
   <% end %>
 <% else %>

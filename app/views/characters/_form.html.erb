@@ -1,11 +1,11 @@
 <%= form_for character do |f| %>
-  <%= f.label :name %>
+  <%= f.label :name %>:
   <%= f.text_field :name %>
   <br>
-  <%= f.label :level %>
+  <%= f.label :level %>:
   <%= f.number_field :level %>
   <br>
-  <%= f.label :race %>
+  <%= f.label :race %>:
   <%= f.radio_button :race, 'Dwarf' %>
   <%= f.label :race, 'Dwarf', :value => 'Dwarf' %>
   <%= f.radio_button :race, 'Elf' %>
@@ -25,7 +25,7 @@
   <%= f.radio_button :race, 'Tiefling' %>
   <%= f.label :race, 'Tiefling', :value => 'Tiefling' %>
   <br>
-  <%= f.label :character_class %>
+  Class:
   <%= f.radio_button :character_class, 'Barbarian' %>
   <%= f.label :character_class, 'Barbarian', :value => 'Barbarian' %>
   <%= f.radio_button :character_class, 'Bard' %>
@@ -51,7 +51,7 @@
   <%= f.radio_button :character_class, 'Wizard' %>
   <%= f.label :character_class, 'Wizard', :value => 'Wizard' %>
   <br>
-  <%= f.label :alignment %>
+  <%= f.label :alignment %>:
   <%= f.radio_button :alignment, 'Lawful Good' %>
   <%= f.label :alignment, 'Lawful Good', :value => 'Lawful Good' %>
   <%= f.radio_button :alignment, 'Neutral Good' %>
@@ -71,42 +71,47 @@
   <%= f.radio_button :alignment, 'Chaotic Evil' %>
   <%= f.label :alignment, 'Chaotic Evil', :value => 'Chaotic Evil' %>
   <br>
-  <%= f.label :strength %>
+  <%= f.label :strength %>:
   <%= f.number_field :strength %>
   <br>
-  <%= f.label :dexterity %>
+  <%= f.label :dexterity %>:
   <%= f.number_field :dexterity %>
   <br>
-  <%= f.label :constitution %>
+  <%= f.label :constitution %>:
   <%= f.number_field :constitution %>
   <br>
-  <%= f.label :intelligence %>
+  <%= f.label :intelligence %>:
   <%= f.number_field :intelligence %>
   <br>
-  <%= f.label :wisdom %>
+  <%= f.label :wisdom %>:
   <%= f.number_field :wisdom %>
   <br>
-  <%= f.label :charisma %>
+  <%= f.label :charisma %>:
   <%= f.number_field :charisma %>
   <br>
-  <%= f.label :hp %>
+  <%= f.label :hp %>:
   <%= f.number_field :hp %>
   <br>
-  <%= f.label :ac %>
+  <%= f.label :ac %>:
   <%= f.number_field :ac %>
   <br>
-  <%= f.label :initiative %>
+  <%= f.label :initiative %>:
   <%= f.number_field :initiative %>
   <br>
-  <%= f.label :speed %>
+  <%= f.label :speed %>:
   <%= f.number_field :speed %>
   <br>
-  <%= f.label :party_id %>
+  <%= f.label :party_id %>:
   <%= f.collection_select :party_id, Party.all, :id, :name, include_blank:true %>
   <br>
-  <%= f.label :notes %>
+  <%= f.label :notes %>:
   <br>
   <%= f.text_area :notes %>
+  <br>
+  <%= f.fields_for :secrets, @character.secrets.build do |secret| %>
+    Add a New Secret:<br>
+    <%= secret.text_area :content %>
+  <% end %>
   <br>
   <%= f.submit 'save' %>
 <% end %>
