@@ -7,7 +7,7 @@ class Character < ActiveRecord::Base
     :dexterity, :constitution, :intelligence, :wisdom, :charisma, :hp, :ac,
     :initiative, :speed, :user_id
 
-  validates :strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma, :speed,
+  validates :strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma,
     inclusion: { in: 0..20 }
   validates :level, inclusion: { in: 1..20 }
 
