@@ -3,6 +3,10 @@ class SecretsController < ApplicationController
 
   def index
     @secrets = @character.secrets
+    respond_to do |f|
+      f.html {render 'index.html'}
+      f.json {render json: @secrets}
+    end
   end
 
   def new

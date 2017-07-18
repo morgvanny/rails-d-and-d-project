@@ -23,7 +23,15 @@
 <p>Notes: <%= @character.notes %></p>
 
 <% if current_user.id == @character.user_id %>
-  <%= link_to "See or Add Secrets", character_secrets_path(@character) %> <br><br>
+
+
+  <%= link_to "See or Add Secrets", character_secrets_path(@character), class: "load_secrets" %> <br>
+  <div class="secrets">
+    <ul>
+    </ul>
+  </div>
+
+
   <%= link_to "Edit Character", edit_character_path(@character) %><br><br>
 
   <%= form_tag(character_path, method: :delete) do %>
