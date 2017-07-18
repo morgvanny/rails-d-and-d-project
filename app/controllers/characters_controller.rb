@@ -18,6 +18,10 @@ class CharactersController < ApplicationController
 
   def show
     @character = Character.find(params[:id])
+    respond_to do |f|
+      f.html {render 'show.html'}
+      f.json {render json: @character, include: ['secrets']}
+    end
   end
 
   def edit
