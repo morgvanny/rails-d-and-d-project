@@ -2,7 +2,7 @@
 <br>
 <% if @characters.count > 0 %>
   <% @characters.each do |character| %>
-    <p>Name: <%= link_to character.name, "/characters/#{character.id}" %> &emsp; Level: <%= character.level %></p>
+    <p>Name: <%= link_to character.name, character_path(character) %> &emsp; Level: <%= character.level %></p>
     <br>
   <% end %>
 <% else %>

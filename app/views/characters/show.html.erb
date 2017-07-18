@@ -2,7 +2,7 @@
 
 <p>Name: <%= @character.name %></p>
 <% if @character.party %>
-  <p>Party: <a href="/parties/<%= @character.party.id %>"><%= @character.party.name %></a></p>
+  <p>Party: <%= link_to @character.party.name, party_path(@character.party) %></p>
 <% else %>
   <p>Party: Not a member of a party yet!</p>
 <% end %>
@@ -24,7 +24,7 @@
 
 <% if current_user.id == @character.user_id %>
   <%= link_to "See or Add Secrets", character_secrets_path(@character) %> <br><br>
-  <a class="btn btn-primary" href="/characters/<%= @character.id %>/edit">Edit Character</a><br><br>
+  <%= link_to "Edit Character", edit_character_path(@character) %><br><br>
 
   <%= form_tag(character_path, method: :delete) do %>
     <input class="btn btn-primary" type="submit" value="Delete Character">
