@@ -41,6 +41,10 @@ class SecretsController < ApplicationController
     @secret = Secret.find(params[:id])
     @next_secret = @secret.next
     @previous_secret = @secret.previous
+    respond_to do |f|
+      f.html {render 'show.html'}
+      f.json {render json: @secret}
+    end
   end
 
   def destroy
