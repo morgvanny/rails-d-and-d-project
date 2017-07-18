@@ -37,6 +37,12 @@ class SecretsController < ApplicationController
     end
   end
 
+  def show
+    @secret = Secret.find(params[:id])
+    @next_secret = @secret.next
+    @previous_secret = @secret.previous
+  end
+
   def destroy
     @secret = Secret.find(params[:id])
     @secret.destroy
