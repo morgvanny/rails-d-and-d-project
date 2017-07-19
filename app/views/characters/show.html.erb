@@ -23,7 +23,7 @@
 <p>Notes: <%= @character.notes %></p>
 
 <% if current_user.id == @character.user_id %>
-  <%= form_tag(character_secrets_path(@character), method: :get) do %>
+  <%= form_tag("/characters/#{@character.id}/secrets/secret_password", method: :post) do %>
     <input type="password" name="secret_password" id="secret_password">
     <input class="btn btn-primary" type="submit" value="See or Add Secrets">
   <% end %>

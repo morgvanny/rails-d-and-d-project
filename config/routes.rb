@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   match 'characters/leaderboard' => 'characters#leaderboard', via: :get
 
   resources :characters do
+    match 'secrets/secret_password' => 'secrets#index', via: :post
     resources :secrets
   end
 
