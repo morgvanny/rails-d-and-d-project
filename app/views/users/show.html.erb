@@ -3,8 +3,12 @@
 <h2>Your Characters:</h2>
 
 <% if @characters.count > 0 %>
+  <% number = 0 %>
   <% @characters.each do |character| %>
-    <%= link_to character.name, character_path(character), class: "info" %>
+    <% number += 1 %>
+    <div class="character_info", id = "div<%= number %>">
+      <%= link_to character.name, character_path(character), class: "info" %>
+    </div>
     <br>
   <% end %>
 <% else %>
