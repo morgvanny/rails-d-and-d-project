@@ -18,6 +18,7 @@ class CharactersController < ApplicationController
 
   def show
     @character = Character.find(params[:id])
+    @secret = @character.secrets.build
     respond_to do |f|
       f.html {render 'show.html'}
       f.json {render json: @character.to_json(only: [:name, :level], include: [secrets: { only: [:id]}]) }

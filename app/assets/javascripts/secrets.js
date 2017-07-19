@@ -13,7 +13,19 @@ $(document).on('turbolinks:load', function(){
       } else {
         $p.append("This character has nothing to hide...yet.")
       }
+      $("#new_secret").show();
     })
+    e.preventDefault();
+  })
+
+  $("#new_secret").on("submit", function(e){
+    url = this.action
+    data = {
+      'authenticity_token': $("input[name='authenticity_token']").val(),
+      'secret': {
+        'content': $("#secret_content").val()
+      }
+    };
     e.preventDefault();
   })
 })
