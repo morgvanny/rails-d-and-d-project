@@ -7,6 +7,7 @@ class CharactersController < ApplicationController
   end
 
   def create
+    filter
     @character = current_user.characters.build(character_params)
     if @character.save
       redirect_to @character
@@ -25,11 +26,13 @@ class CharactersController < ApplicationController
   end
 
   def update
+    filter
     @character = Character.find(params[:id])
     if @character.user_id == current_user.id
       if @character.update(character_params)
         redirect_to @character
       else
+        binding.pry
         flash[:alert] = "Fields must be filled out correctly"
         render :edit
       end
@@ -58,7 +61,13 @@ class CharactersController < ApplicationController
   def character_params
     params.require(:character).permit(:name, :level, :race, :character_class,
       :alignment, :strength, :dexterity, :constitution, :intelligence, :wisdom,
-      :charisma, :hp, :ac, :initiative, :speed, :notes, :user_id, :party_id, secrets_attributes: [:id, :content])
+      :charisma, :hp, :ac, :initiative, :speed, :notes, :secret_password, :user_id, :party_id, secrets_attributes: [:id, :content])
+  end
+
+  def filter
+    if params[:character][:secrets_attributes]["0"][:content] = ""
+      params[:character].delete("secrets_attributes")
+    end
   end
 
 end

@@ -2,6 +2,7 @@ class SecretsController < ApplicationController
   before_action :set_character, :get_permission
 
   def index
+    password_mismatch
     @secrets = @character.secrets
   end
 
@@ -46,6 +47,15 @@ class SecretsController < ApplicationController
 
     def secret_params
       params.require(:secret).permit(:content)
+    end
+
+    def password_mismatch
+      if params[:secret_password] != @character.secret_password && session[@character.id] != true
+        flash[:alert] = "Try again!"
+        redirect_to character_path(@character)
+      else
+        session[@character.id] = true
+      end
     end
 
     def get_permission

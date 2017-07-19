@@ -108,6 +108,10 @@
   <br>
   <%= f.text_area :notes %>
   <br>
+  <%= f.label :secret_password %>:
+  <br>
+  <%= f.password_field :secret_password %>
+  <br>
   <%= f.fields_for :secrets, @character.secrets.build do |secret| %>
     Add a New Secret:<br>
     <%= secret.text_area :content %>
