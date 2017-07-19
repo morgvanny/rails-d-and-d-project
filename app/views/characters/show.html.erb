@@ -34,7 +34,7 @@
 
   <%= form_for([@character, @secret], :html => { style: "display: none" }) do |f| %>
     <p>Add a Secret: </p>
-    <%= f.text_area :content %>
+    <%= f.text_area :content, required: true %>
     <p><%= f.submit %></p>
   <% end %>
 
