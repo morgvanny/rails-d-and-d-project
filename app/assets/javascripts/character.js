@@ -1,27 +1,31 @@
+function Character(attributes){
+  this.name = attributes.name;
+  this.level = attributes.level;
+  this.secrets = attributes.secrets.length;
+}
+
+Character.prototype.renderP = function(){
+  return Character.template(this)
+}
+
+Character.details = function(json) {
+      var character = new Character(json);
+      characterP = character.renderP()
+      $(link.nextElementSibling).append(characterP)
+    }
+
 $(document).on('turbolinks:load', function(){
+
+  if (Character.templateSource = $("#character-template").html()){
+    Character.template = Handlebars.compile(Character.templateSource)
+  }
+  
+  
   $("a.info").on("mouseover", function(){
-    var character = this.parentElement
-    $.getJSON(this.href).success(function(json) {
-      var name = document.createElement("p");
-      var name_node = document.createTextNode(json.name)
-      name.appendChild(name_node)
-      character.appendChild(name)
-      var level = document.createElement("p");
-      var level_node = document.createTextNode(", Level " + json.level)
-      name.appendChild(level_node)
-      character.appendChild(level)
-      var secrets = document.createElement("p");
-      var secrets_node = document.createTextNode(", " + json.secrets.length + " secrets")
-      name.appendChild(secrets_node)
-      character.appendChild(secrets)
-    })
+    link = this
+    $.getJSON(this.href).done(Character.details)
   })
   $("a.info").on("mouseout", function(){
-      var node = this.parentElement
-      var p_list = node.getElementsByTagName("p")
-      for(var i=p_list.length-1; i>=0; i--) {
-        var p = p_list[i];
-        p.parentNode.removeChild(p)
-      }
+    $(".details").html("")
   })
 })

@@ -5,9 +5,10 @@
 <% if @characters.count > 0 %>
   <% number = 0 %>
   <% @characters.each do |character| %>
-    <% number += 1 %>
-    <div class="character_info", id = "div<%= number %>">
+    <div class="character_info">
       <%= link_to character.name, character_path(character), class: "info" %>
+      <div class="details">
+      </div>
     </div>
     <br>
   <% end %>
@@ -34,3 +35,7 @@
 <% else %>
   <p>Create a character before you start a party<p>
 <% end %>
+
+<script id="character-template" type="text/x-handlebars-template">
+  <p>{{name}} is Level {{level}} and has {{secrets}} secrets!</p>
+</script>
