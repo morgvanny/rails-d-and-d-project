@@ -3,16 +3,17 @@ function Secret(attributes){
   this.content = attributes.content
 }
 
-Secret.templateSource = $("#secret-template").html()
-Secret.template = Handlebars.compile(Secret.templateSource)
-
 Secret.prototype.renderLI = function(){
   return Secret.template(this)
 }
 
-
 $(document).on('turbolinks:load', function(){
+
+  Secret.templateSource = $("#secret-template").html()
+  Secret.template = Handlebars.compile(Secret.templateSource)
+
   var $ul = $("div.secrets ul")
+  
   $("a.load_secrets").on("click", function(e){
     const baseURL = this.href
     $.getJSON(baseURL).success(function(json) {
@@ -39,11 +40,9 @@ $(document).on('turbolinks:load', function(){
     $.post(action, params)
     .success(function(json){
       var secret = new Secret(json);
-
       secretLi = secret.renderLI()
-
-      $("#secret_content").val("");
       $ul.append(secretLi)
+      $("#secret_content").val("");
     })
     e.preventDefault();
   })

@@ -16,7 +16,7 @@ class SecretsController < ApplicationController
   def create
     @secret = @character.secrets.build(secret_params)
     if @secret.save
-      render 'secrets/one', layout: false
+      render json: @secret
     else
       flash[:alert] = "Fields must be filled out correctly"
       render :new
