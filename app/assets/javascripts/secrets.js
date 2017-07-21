@@ -1,3 +1,16 @@
+function Secret(attributes){
+  this.id = attributes.id;
+  this.content = attributes.content
+}
+
+Secret.templateSource = $("#secret-template").html()
+Secret.template = Handlebars.compile(Secret.templateSource)
+
+Secret.prototype.renderLI = function(){
+  return Secret.template(this)
+}
+
+
 $(document).on('turbolinks:load', function(){
   var $ul = $("div.secrets ul")
   $("a.load_secrets").on("click", function(e){
@@ -20,18 +33,18 @@ $(document).on('turbolinks:load', function(){
 
   $("#new_secret").on("submit", function(e){
 
-    var data = $(this).serialize();
+    var $form = $(this);
+    var action = $form.attr("action")
+    var params = $form.serialize()
+    $.post(action, params)
+    .success(function(json){
+      var secret = new Secret(json);
 
-    $.ajax({
-       type: "POST",
-       url: this.action,
-       data: data,
-       success: function(response){
-         $("#secret_content").val("");
-         $ul.append(response)
-       }
-     });
+      secretLi = secret.renderLI()
 
+      $("#secret_content").val("");
+      $ul.append(secretLi)
+    })
     e.preventDefault();
   })
 })
