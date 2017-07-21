@@ -33,7 +33,6 @@ $(document).on('turbolinks:load', function(){
   })
 
   $("#new_secret").on("submit", function(e){
-
     var $form = $(this);
     var action = $form.attr("action")
     var params = $form.serialize()
