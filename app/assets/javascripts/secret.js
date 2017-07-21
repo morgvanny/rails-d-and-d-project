@@ -1,7 +1,7 @@
 $(document).on('turbolinks:load', function(){
   $("a.switch").on("click", function(e){
     const URL = this.href
-    $.getJSON(URL).success(function(json) {
+    $.getJSON(URL).done(function(json) {
       var $h3 = $("h3")
       $h3.html("").append(json.content)
       if (json.previous_id === null) {
