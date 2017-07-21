@@ -1,3 +1,5 @@
+var $ul
+
 function Secret(attributes){
   this.id = attributes.id;
   this.content = attributes.content
@@ -7,16 +9,15 @@ Secret.prototype.renderLI = function(){
   return Secret.template(this)
 }
 
-$(document).on('turbolinks:load', function(){
+Secret.show = function(json){
+      var secret = new Secret(json);
+      secretLi = secret.renderLI()
+      $ul.append(secretLi)
+    }
 
-  Secret.templateSource = $("#secret-template").html()
-  Secret.template = Handlebars.compile(Secret.templateSource)
-
-  var $ul = $("div.secrets ul")
-  
-  $("a.load_secrets").on("click", function(e){
+Secret.show_all = function(e){
     const baseURL = this.href
-    $.getJSON(baseURL).success(function(json) {
+    $.getJSON(baseURL).done(function(json) {
       var $p = $("div.secrets p")
       $ul.html("")
       $p.html("")
@@ -30,19 +31,25 @@ $(document).on('turbolinks:load', function(){
       $("#new_secret").show();
     })
     e.preventDefault();
-  })
+  }
 
-  $("#new_secret").on("submit", function(e){
+Secret.form_submit = function(e){
     var $form = $(this);
     var action = $form.attr("action")
     var params = $form.serialize()
     $.post(action, params)
-    .success(function(json){
-      var secret = new Secret(json);
-      secretLi = secret.renderLI()
-      $ul.append(secretLi)
-      $("#secret_content").val("");
-    })
+    .done(Secret.show).done($("#secret_content").val(""))
     e.preventDefault();
-  })
+  }
+
+$(document).on('turbolinks:load', function(){
+
+  if (Secret.templateSource = $("#secret-template").html()){
+    Secret.template = Handlebars.compile(Secret.templateSource)
+  }
+  
+  $ul = $("div.secrets ul")
+  
+  $("a.load_secrets").on("click", Secret.show_all)
+  $("#new_secret").on("submit", Secret.form_submit)
 })
