@@ -46,5 +46,5 @@
 <% end %>
 
 <script id="secret-template" type="text/x-handlebars-template">
-  <li><a href="/characters/<%= @character.id %>/secrets/{{id}}">{{content}}</a></li>
+  <li><a href="/characters/<%= @character.id %>/secrets/{{id}}">{{content}}</a><button id="delete_secret_{{id}}" data-url="/characters/<%= @character.id %>/secrets/{{id}}">x</button></li>
 </script>

@@ -10,10 +10,22 @@ Secret.prototype.renderLI = function(){
 }
 
 Secret.show = function(json){
-      var secret = new Secret(json);
-      secretLi = secret.renderLI()
-      $ul.append(secretLi)
+  var secret = new Secret(json);
+  secretLi = secret.renderLI()
+  $ul.append(secretLi)
+  $(`#delete_secret_${secret.id}`).on("click", Secret.delete)
+}
+
+Secret.delete = function(e) {
+  e.preventDefault();
+  $.ajax({
+    url: this.dataset.url,
+    type: 'DELETE',
+    done: function(result) {
+       console.log('I made it')
     }
+  });
+}
 
 Secret.load = function(e){
     const baseURL = this.href
