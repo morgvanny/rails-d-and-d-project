@@ -1,4 +1,4 @@
-class Character < ActiveRecord::Base
+class Character < ApplicationRecord
   belongs_to :user
   belongs_to :party
   has_many :secrets
