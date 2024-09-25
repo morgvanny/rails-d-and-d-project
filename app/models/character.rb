@@ -11,7 +11,7 @@ class Character < ApplicationRecord
     inclusion: { in: 0..20 }
   validates :level, inclusion: { in: 1..20 }
 
-  def self.leaderboard
+  def self.all_characters
     Character.all.order(level: :desc)
   end
 

@@ -42,8 +42,8 @@ class CharactersController < ApplicationController
     end
   end
 
-  def leaderboard
-    @characters = Character.leaderboard
+  def ranking
+    @characters = Character.ranking
   end
 
   def destroy
@@ -54,6 +54,10 @@ class CharactersController < ApplicationController
       flash[:alert] = "You can't delete someone else's character!"
     end
     redirect_to user_path(current_user)
+  end
+
+  def all
+    @characters = Character.all_characters
   end
 
   private

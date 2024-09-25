@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :users, :only => [:show]
 
-  match 'characters/leaderboard' => 'characters#leaderboard', via: :get
+  match 'characters/ranking' => 'characters#ranking', via: :get
 
   resources :characters do
     match 'secrets/secret_password' => 'secrets#index', via: :post
@@ -68,4 +68,6 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  match 'characters/all' => 'characters#all', via: :get
 end
